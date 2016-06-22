@@ -27,7 +27,7 @@ zstyle ':completion:*' menu select
 [[ $- = *i* ]] && source ~/.shell_prompt.sh
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-bright.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # autosuggestions like fish
@@ -79,3 +79,8 @@ precmd() {
     precmd_dirs="$(basename $(dirname $PWD))/$(basename $PWD)";
     printf "\x1b]0;%s\x07" "$precmd_dirs" }
 
+# load vte profile
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+  __vte_osc7
+fi

@@ -4,10 +4,10 @@ call vundle#begin()
 
     " Let Vungle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
-    Plugin 'valloric/youcompleteme'
+    "Plugin 'valloric/youcompleteme'
     "Plugin 'vim-scripts/restore_view.vim'
-    Plugin 'tmhedberg/SimpylFold'
-    Plugin 'hynek/vim-python-pep8-indent'
+    "Plugin 'tmhedberg/SimpylFold'
+    "Plugin 'hynek/vim-python-pep8-indent'
     Plugin 'ntpeters/vim-better-whitespace'
     "Plugin 'scrooloose/syntastic'
     "Plugin 'nvie/vim-flake8'
@@ -19,9 +19,10 @@ call vundle#begin()
     Plugin 'chriskempson/base16-vim' 
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'ryanoasis/vim-devicons'
-    Plugin 'FredKSchott/CoVim'
     Plugin 'edkolev/tmuxline.vim'
-
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'klen/python-mode'
+    Plugin 'hynek/vim-python-pep8-indent'
 
 call vundle#end()           " required
 filetype plugin indent on   " required

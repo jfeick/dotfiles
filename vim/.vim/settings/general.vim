@@ -1,5 +1,10 @@
 " Disable vi compatibility to be iMproved
-set nocompatible
+if !has('nvim')
+    set nocompatible
+endif
+
+" Set non-saved buffers hidden
+set hidden
 
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
@@ -38,7 +43,9 @@ set background=dark
 
 
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+if !has('nvim')
+    set encoding=utf8
+endif
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -80,7 +87,7 @@ set secure
 " enable hard mode
 noremap <Up> :echoerr "Stop being stupid!"<CR>
 noremap <Down> :echoerr "Stop being stupid!"<CR>
-noremap <Left> :echoerr "Stop being stupid!"<CR>ri 
+noremap <Left> :echoerr "Stop being stupid!"<CR>
 noremap <Right> :echoerr "Stop being stupid!"<CR>
 
 inoremap <up> <NOP>
@@ -98,3 +105,36 @@ au CursorHoldI * stopinsert
 " set 'updatetime' to 10 seconds when in insert mode
 au InsertEnter * let updaterestore=&updatetime | set updatetime=8000
 au InsertLeave & let &updatetime=updaterestore
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" force saving files that require root permission
+cmap w!! %!sudo tee > /dev/null %
+" clear search highlights
+noremap <silent><Leader>/ :noh<CR>
+
+" keep search pattern at the center of the screen
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> g# g*zz
+
+" invisible characters
+set nolist
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
+" toggle invisibles
+noremap <Leader>i :set list!<CR>
+
+" scroll behaviour
+" Number of lines from vertical edge to start scrolling
+set scrolloff=5
+" Number of cols from horizontal edge to start scrolling
+set sidescrolloff=15
+" Number of cols to scroll at a time
+set sidescroll=1
